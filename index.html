@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="uz" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>UstozHub — O‘zbekistondagi eng yaxshi repetitorlarni toping</title>
+  <meta name="description" content="IELTS, DTM, Prezident maktabi va boshqa fanlar bo‘yicha tasdiqlangan repetitorlar. Onlayn dars, Click/Payme to‘lov, xavfsiz kafolat." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <a href="#main" class="skip-link">Asosiy kontentga o‘tish</a>
+  <div class="bg-orbs" aria-hidden="true"><span></span><span></span><span></span></div>
+
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="#top" class="logo" aria-label="UstozHub bosh sahifasi"><span class="logo__mark">U</span>Ustoz<b>Hub</b></a>
+      <nav class="nav__links" id="navLinks" aria-label="Asosiy menyu">
+        <a href="tutors.html">Ustoz qidirish</a>
+        <a href="#how">Qanday ishlaydi</a>
+        <a href="#parents">Ota-onalar</a>
+        <a href="classroom.html">Dars xonasi</a>
+        <a href="#pricing">Narxlar</a>
+      </nav>
+      <div class="nav__actions">
+        <button class="icon-btn" id="themeToggle" aria-label="Mavzuni almashtirish (yorug‘ yoki to‘q)">🌙</button>
+        <div id="userNavArea"></div>
+        <a href="tutors.html" class="btn btn--ghost btn--sm">Ustoz topish</a>
+        <button class="icon-btn burger" id="burger" aria-label="Mobil menyuni ochish" aria-expanded="false" aria-controls="navLinks">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero container">
+      <div class="hero__text">
+        <span class="chip chip--glow">🇺🇿 O‘zbekiston uchun yaratilgan</span>
+        <h1>Maqsadingizga olib boradigan <span class="grad">ustozni</span> toping</h1>
+        <p class="lead">IELTS, DTM, Prezident maktabi, Ona tili, Rus tili, IT — tasdiqlangan ustozlar, so‘mda to‘lov va xavfsiz kafolat bilan.</p>
+
+        <form class="search" id="heroSearch">
+          <input id="heroQuery" type="text" placeholder="Qaysi fanni o‘rganmoqchisiz? (masalan: IELTS)" aria-label="Qidiruv" />
+          <button class="btn btn--primary" type="submit">Qidirish</button>
+        </form>
+        <div class="quick" id="quickTags"></div>
+
+        <div class="stats">
+          <div><b data-count="1280">0</b><span>Tasdiqlangan ustoz</span></div>
+          <div><b data-count="15400">0</b><span>O‘tilgan dars</span></div>
+          <div><b data-count="4.9" data-dec="1">0</b><span>O‘rtacha baho</span></div>
+        </div>
+      </div>
+
+      <div class="hero__visual">
+        <div class="float-card fc1 glass">
+          <div class="avatar" style="--a:#7c5cff;--b:#22d3a6">DK</div>
+          <div><b>Dilnoza K.</b><small>IELTS 8.5 · ⭐ 4.9</small></div>
+        </div>
+        <div class="float-card fc2 glass">✅ To‘lov tasdiqlandi<br/><small>Click · 120 000 so‘m</small></div>
+        <div class="float-card fc3 glass">✈️ Telegram eslatma<br/><small>Dars 15 daqiqadan so‘ng</small></div>
+        <div class="hero__circle"><div class="hero__big">A+</div></div>
+      </div>
+    </section>
+
+    <!-- CATEGORIES -->
+    <section class="container section">
+      <div class="cats" id="cats"></div>
+    </section>
+
+    <!-- HOW -->
+    <section class="container section" id="how">
+      <div class="section__head"><h2>Qanday <span class="grad">ishlaydi</span></h2><p>4 oddiy qadam</p></div>
+      <div class="steps">
+        <div class="step glass"><i>1</i><h3>Ustozni tanlang</h3><p>Fan, narx va natijalarga qarab filtrlang, video-tanishuvni ko‘ring.</p></div>
+        <div class="step glass"><i>2</i><h3>Vaqtni band qiling</h3><p>Taqvimdan qulay kun va soatni, formatni tanlang.</p></div>
+        <div class="step glass"><i>3</i><h3>Xavfsiz to‘lang</h3><p>Click, Payme yoki Uzum. Pul dars o‘tgunicha platformada saqlanadi.</p></div>
+        <div class="step glass"><i>4</i><h3>Dars oling</h3><p>Video, doska va chat bor dars xonasida o‘qing.</p></div>
+      </div>
+    </section>
+
+    <!-- PARENTS -->
+    <section class="container section" id="parents">
+      <div class="two">
+        <div>
+          <span class="chip">Ota-onalar uchun</span>
+          <h2>Farzandingiz natijasi <span class="grad">doim ko‘z oldingizda</span></h2>
+          <ul class="ticks">
+            <li>Davomat va dars tarixi</li>
+            <li>Ustozning har dars bo‘yicha qisqa fikri</li>
+            <li>Haftalik hisobot Telegramga avtomatik keladi</li>
+            <li>Dars boshlanishidan oldin eslatma</li>
+          </ul>
+          <label class="toggle"><input type="checkbox" id="tgToggle" checked /><span></span> Telegram eslatmalarini yoqish</label>
+          <button class="btn btn--ghost" id="tgDemo">✈️ Eslatmani sinab ko‘rish</button>
+        </div>
+        <div class="dash glass">
+          <div class="dash__head"><b>Aziza · 8-sinf</b><span class="chip chip--ok">Faol</span></div>
+          <div class="kpis">
+            <div><b>94%</b><small>Davomat</small></div>
+            <div><b>18</b><small>Dars</small></div>
+            <div><b>+27%</b><small>O‘sish</small></div>
+          </div>
+          <div class="bars" id="bars"></div>
+          <div class="note"><b>Ustoz fikri:</b> “Uy vazifasini to‘liq bajardi, kasrlar mavzusini yaxshi o‘zlashtirdi.”</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLASSROOM SHOWCASE -->
+    <section class="container section" id="classroom">
+      <div class="cshowcase glass">
+        <div class="cshowcase__text">
+          <span class="chip chip--glow">⚡ Qo‘shimcha dasturlarsiz</span>
+          <h2>Interaktiv <span class="grad">dars xonasi</span></h2>
+          <p class="lead">Zoom yoki Google Meet o‘rnatish shart emas. To‘g‘ridan-to‘g‘ri brauzerda: jonli HD video, umumiy doskada chizish, darslik slaydlar va tezkor chat.</p>
+          <ul class="ticks">
+            <li>O‘qituvchi va o‘quvchi uchun 2 tomonlama interaktiv doska</li>
+            <li>Darslik slaydlar, testlar va yangi so‘zlar lug‘ati</li>
+            <li>Dars rejasi (checklist) va shaxsiy qaydlar daftari</li>
+            <li>Ekran ulashish va qo‘l ko‘tarish imkoniyati</li>
+          </ul>
+          <a href="classroom.html" class="btn btn--primary">Dars xonasiga kirish (Jonli Demo) →</a>
+        </div>
+        <div class="cshowcase__visual">
+          <div class="cshowcase__card glass">
+            <div class="cshowcase__badge">🔴 JONLI EFIR · 24:18</div>
+            <div class="cshowcase__mock-vids">
+              <div class="mock-vid" style="--a:#7c5cff;--b:#22d3a6"><b>DK</b><span>Dilnoza (Ustoz)</span></div>
+              <div class="mock-vid" style="--a:#ff7a59;--b:#ffb347"><b>SI</b><span>Siz (O‘quvchi)</span></div>
+            </div>
+            <div class="cshowcase__mock-board">
+              <span class="mock-pencil">✏️</span>
+              <p>Present Perfect: have/has + V3 ✍️</p>
+            </div>
+            <div class="cshowcase__chips">
+              <span>🎙️ Ovoz toza</span>
+              <span>📶 60 FPS</span>
+              <span>💾 Avto-saqlash</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="container section" id="pricing">
+      <div class="section__head"><h2>Qulay <span class="grad">to‘lov</span> variantlari</h2><p>So‘mda, bo‘lib to‘lash imkoniyati bilan</p></div>
+      <div class="plans">
+        <div class="plan glass"><h3>Yakka dars</h3><div class="price">60 000 dan<small> so‘m/soat</small></div><ul><li>1-ga-1 individual</li><li>Video yozuv</li><li>Sinov darsi kafolati</li></ul><a href="tutors.html" class="btn btn--ghost">Tanlash</a></div>
+        <div class="plan plan--pop glass"><span class="badge">Ommabop</span><h3>Mini-guruh</h3><div class="price">25 000 dan<small> so‘m/soat</small></div><ul><li>3–5 kishi</li><li>2–3 barobar arzon</li><li>Guruh chat</li></ul><a href="tutors.html" class="btn btn--primary">Tanlash</a></div>
+        <div class="plan glass"><h3>Oylik paket</h3><div class="price">−15%<small> chegirma</small></div><ul><li>8 yoki 12 dars</li><li>3–6 oyga bo‘lib to‘lash</li><li>Ota-ona hisoboti</li></ul><a href="tutors.html" class="btn btn--ghost">Tanlash</a></div>
+      </div>
+      <div class="pay-logos"><span>Click</span><span>Payme</span><span>Uzum</span><span>🔒 Escrow kafolat</span></div>
+    </section>
+
+    <!-- CTA -->
+    <section class="container section">
+      <div class="cta glass">
+        <h2>Ustozmisiz? <span class="grad">Bizga qo‘shiling</span></h2>
+        <p>O‘zingiz belgilagan narxda dars bering, to‘lov kafolatlangan.</p>
+        <button class="btn btn--primary" id="ctaTutor">Ustoz sifatida ro‘yxatdan o‘tish</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__in">
+      <div><a href="#top" class="logo"><span class="logo__mark">U</span>Ustoz<b>Hub</b></a><p>O‘zbekiston uchun onlayn repetitorlik platformasi.</p></div>
+      <small>© 2026 UstozHub. Barcha huquqlar himoyalangan.</small>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div class="overlay" id="overlay" hidden>
+    <div class="modal glass" role="dialog" aria-modal="true" id="modal">
+      <button class="modal__x" id="modalX" aria-label="Yopish">✕</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <div class="toasts" id="toasts"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>

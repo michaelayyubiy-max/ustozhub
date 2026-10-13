@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="uz" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Interaktiv dars xonasi — UstozHub</title>
+  <meta name="description" content="UstozHub onlayn dars xonasi: videoaloqa, interaktiv doska, darslik slaydlar va chat." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="cbody">
+  <a href="#main" class="skip-link">Asosiy dars maydoniga o‘tish</a>
+  <div class="bg-orbs" aria-hidden="true"><span></span><span></span><span></span></div>
+
+  <!-- CLASSROOM HEADER -->
+  <header class="cnav" role="banner">
+    <div class="cnav__left">
+      <a href="index.html" class="logo" title="Bosh sahifaga qaytish" aria-label="UstozHub bosh sahifasiga qaytish">
+        <span class="logo__mark">U</span>Ustoz<b>Hub</b>
+      </a>
+      <div class="cnav__info">
+        <span class="cnav__subject">🇬🇧 IELTS Speaking & Grammar</span>
+        <span class="cnav__tutor">Ustoz: <b>Dilnoza Karimova</b></span>
+      </div>
+    </div>
+
+    <div class="cnav__center">
+      <div class="clive" aria-label="Dars holati: Jonli dars"><span class="clive__dot"></span> JONLI DARS</div>
+      <div class="ctimer" id="cTimer" aria-label="Dars davomiyligi taymeri">00:00</div>
+    </div>
+
+    <div class="cnav__right">
+      <div class="net-badge" title="Tarmoq holati: barqaror" aria-label="Internet tezligi: barqaror">📶 <span>Barqaror</span></div>
+      <button class="icon-btn" id="themeToggle" aria-label="Mavzuni almashtirish (yorug‘ yoki to‘q)">🌙</button>
+      <div id="userNavArea"></div>
+      <button class="icon-btn" id="fsBtn" title="To‘liq ekran" aria-label="To‘liq ekran rejimini yoqish">⛶</button>
+      <a href="index.html" class="btn btn--ghost btn--sm danger-link" id="exitBtn" aria-label="Darsdan chiqish">Darsdan chiqish</a>
+    </div>
+  </header>
+
+  <!-- CLASSROOM WORKSPACE -->
+  <main class="cworkspace" id="main" role="main">
+    <!-- STAGE (Left 72%) -->
+    <section class="cstage">
+      <!-- Top Video Feeds -->
+      <div class="cvideo-grid" id="videoGrid">
+        <div class="cvid cvid--tutor glass" id="tutorTile">
+          <div class="cvid__avatar" style="--a:#7c5cff;--b:#22d3a6">DK</div>
+          <div class="cvid__meta">
+            <span class="cvid__name">Dilnoza K. (Ustoz) <span class="badge-ver">✓</span></span>
+            <span class="cvid__wave"><i></i><i></i><i></i><i></i></span>
+          </div>
+          <div class="cvid__tags">
+            <span class="mic-on" title="Mikrofon yoniq">🎙️</span>
+            <span title="Kamera yoniq">📹</span>
+          </div>
+        </div>
+
+        <div class="cvid cvid--student glass" id="studentTile">
+          <div class="cvid__avatar" id="studentAvatar" style="--a:#ff7a59;--b:#ffb347">SI</div>
+          <div class="cvid__screen" id="studentScreenShare" hidden>
+            <div class="screen-preview">
+              <span>🖥️ Ekraningiz ulashilmoqda</span>
+              <small>Taqdimot oynasi faol</small>
+            </div>
+          </div>
+          <div class="cvid__meta">
+            <span class="cvid__name" id="studentDisplayName">Siz (O‘quvchi)</span>
+            <span class="hand-raised" id="studentHand" hidden>✋ Qo‘l ko‘targan</span>
+          </div>
+          <div class="cvid__tags">
+            <span id="stMicBadge">🎙️</span>
+            <span id="stCamBadge">📹</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stage Center Workspace Tabs -->
+      <div class="cview-bar">
+        <div class="cview-tabs" role="tablist" aria-label="Dars xonasi zonalari">
+          <button class="cview-btn active" role="tab" aria-selected="true" data-tab="board" aria-controls="tabBoard">🎨 Interaktiv doska</button>
+          <button class="cview-btn" role="tab" aria-selected="false" data-tab="slides" aria-controls="tabSlides">📖 Darslik va Mashqlar</button>
+          <button class="cview-btn" role="tab" aria-selected="false" data-tab="vocab" aria-controls="tabVocab">📝 Lug‘at (Vocabulary)</button>
+        </div>
+        <div class="cview-extra">
+          <button class="cview-zoom" id="gridToggleBtn" title="Katakli fonni yoqish/o‘chirish" aria-label="Doskada katakli fonni yoqish yoki o‘chirish">📐 Katakli fon</button>
+          <button class="cview-zoom" id="downloadBoardBtn" title="Doskani rasm sifatida yuklab olish" aria-label="Doska chizmalarini rasm qilib saqlash">💾 Rasm qilib saqlash</button>
+        </div>
+      </div>
+
+      <!-- Tab 1: WHITEBOARD -->
+      <div class="cview-content active" id="tabBoard" role="tabpanel" aria-label="Interaktiv doska">
+        <!-- Whiteboard Toolbar -->
+        <div class="wb-toolbar glass" role="toolbar" aria-label="Doska asboblari">
+          <div class="wb-group">
+            <button class="wb-btn active" data-tool="pen" title="Qalam" aria-label="Chizish vositasi: Qalam">✏️</button>
+            <button class="wb-btn" data-tool="highlighter" title="Marker" aria-label="Chizish vositasi: Marker">🖍️</button>
+            <button class="wb-btn" data-tool="eraser" title="O‘chirg‘ich" aria-label="Chizish vositasi: O‘chirg‘ich">🧽</button>
+          </div>
+
+          <div class="wb-sep"></div>
+
+          <div class="wb-colors" role="radiogroup" aria-label="Doska chizish rangi">
+            <button class="wb-color active" data-color="#22d3a6" style="--c:#22d3a6" title="Zumrad yashil" aria-label="Rang: Zumrad yashil"></button>
+            <button class="wb-color" data-color="#7c5cff" style="--c:#7c5cff" title="Binafsha" aria-label="Rang: Binafsha"></button>
+            <button class="wb-color" data-color="#ff7a59" style="--c:#ff7a59" title="To‘q sariq" aria-label="Rang: To‘q sariq"></button>
+            <button class="wb-color" data-color="#facc15" style="--c:#facc15" title="Sariq" aria-label="Rang: Sariq"></button>
+            <button class="wb-color" data-color="#ffffff" style="--c:#ffffff" title="Oq" aria-label="Rang: Oq"></button>
+          </div>
+
+          <div class="wb-sep"></div>
+
+          <div class="wb-sizes" role="radiogroup" aria-label="Chiziq qalinligi">
+            <button class="wb-size" data-size="2" title="Yupqa" aria-label="Chiziq qalinligi: 1x Yupqa">1x</button>
+            <button class="wb-size active" data-size="5" title="O‘rtacha" aria-label="Chiziq qalinligi: 2x O‘rtacha">2x</button>
+            <button class="wb-size" data-size="12" title="Qalin" aria-label="Chiziq qalinligi: 3x Qalin">3x</button>
+          </div>
+
+          <div class="wb-sep"></div>
+
+          <button class="wb-action" id="wbClearBtn" title="Doskani to‘liq tozalash" aria-label="Doskani to‘liq tozalash">Tozalash</button>
+        </div>
+
+        <!-- Canvas Area -->
+        <div class="wb-canvas-wrap" id="canvasWrap">
+          <canvas id="cBoard" width="1000" height="520"></canvas>
+          <div class="wb-hint">💡 Sichqoncha yoki barmog‘ingiz bilan doskaga yozing</div>
+        </div>
+      </div>
+
+      <!-- Tab 2: INTERACTIVE SLIDES & EXERCISES -->
+      <div class="cview-content" id="tabSlides">
+        <div class="cslide glass">
+          <div class="cslide__badge">Mavzu: Unit 4 · Present Perfect tense</div>
+          <h3>Qoida va amaliyot: <i>Have/Has + Past Participle (V3)</i></h3>
+          <p class="cslide__text">Present Perfect o‘tmishda sodir bo‘lgan, ammo natijasi <b>hozirgi paytda</b> muhim bo‘lgan harakatlar uchun ishlatiladi.</p>
+
+          <div class="cslide__example">
+            <code>Misol: I <b>have lost</b> my key. (Kalitimni yo‘qotib qo‘ydim, hozir ham topolmayapman).</code>
+          </div>
+
+          <div class="cslide__quiz">
+            <div class="quiz-q"><b>Savol 1:</b> She _____ (already / finish) her homework.</div>
+            <div class="quiz-options">
+              <button class="q-opt" data-correct="false">A) is already finished</button>
+              <button class="q-opt" data-correct="true">B) has already finished</button>
+              <button class="q-opt" data-correct="false">C) have already finish</button>
+            </div>
+            <div class="quiz-feedback" id="quizFeedback"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 3: VOCABULARY -->
+      <div class="cview-content" id="tabVocab">
+        <div class="cvocab glass">
+          <h3>Dars davomida o‘rganilgan yangi so‘zlar</h3>
+          <div class="vocab-grid">
+            <div class="vcard">
+              <b>Accomplish</b>
+              <small>/əˈkʌm.plɪʃ/ · fe’l</small>
+              <p>Muvaffaqiyatli yakunlamoq, erishmoq</p>
+            </div>
+            <div class="vcard">
+              <b>Fluency</b>
+              <small>/ˈfluː.ən.si/ · ot</small>
+              <p>Erkin va ravon gapirish qobiliyati</p>
+            </div>
+            <div class="vcard">
+              <b>Perseverance</b>
+              <small>/ˌpɜː.sɪˈvɪə.rəns/ · ot</small>
+              <p>Sabr-toqat, qat’iyatlilik</p>
+            </div>
+            <div class="vcard">
+              <b>Enhance</b>
+              <small>/ɪnˈhɑːns/ · fe’l</small>
+              <p>Yaxshilamoq, oshirmoq</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stage Bottom Control Dock -->
+      <div class="cdock glass" role="toolbar" aria-label="Dars boshqaruv paneli">
+        <button class="cdock-btn" id="toggleMic" title="Mikrofonni yoqish/o‘chirish" aria-label="Mikrofonni yoqish yoki o‘chirish">
+          <span class="cdock-ic">🎙️</span>
+          <span class="cdock-label">Mikrofon</span>
+        </button>
+
+        <button class="cdock-btn" id="toggleCam" title="Kamerani yoqish/o‘chirish" aria-label="Kamerani yoqish yoki o‘chirish">
+          <span class="cdock-ic">📹</span>
+          <span class="cdock-label">Kamera</span>
+        </button>
+
+        <button class="cdock-btn" id="toggleScreen" title="Ekranni ulashish" aria-label="Ekranni ulashish yoki to‘xtatish">
+          <span class="cdock-ic">🖥️</span>
+          <span class="cdock-label">Ekran</span>
+        </button>
+
+        <button class="cdock-btn" id="toggleHand" title="Qo‘l ko‘tarish" aria-label="Ustozga savol berish uchun qo‘l ko‘tarish">
+          <span class="cdock-ic">✋</span>
+          <span class="cdock-label">Qo‘l ko‘tarish</span>
+        </button>
+
+        <button class="cdock-btn" id="toggleSidebar" title="Chat va Rejani ko‘rish" aria-label="Yon panelni (chat va reja) ko‘rsatish yoki yashirish">
+          <span class="cdock-ic">💬</span>
+          <span class="cdock-label">Chat</span>
+        </button>
+
+        <div class="cdock-sep" aria-hidden="true"></div>
+
+        <button class="cdock-btn cdock-btn--danger" id="endClassBtn" title="Darsni yakunlash" aria-label="Darsni yakunlash va chiqish">
+          <span class="cdock-ic">📞</span>
+          <span class="cdock-label">Tugatish</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- SIDEBAR (Right 28%) -->
+    <aside class="csidebar glass" id="cSidebar" aria-label="Dars yordamchi paneli">
+      <div class="cside-tabs" role="tablist" aria-label="Yon panel bo‘limlari">
+        <button class="cside-tab active" role="tab" aria-selected="true" data-side="chat">💬 Chat</button>
+        <button class="cside-tab" role="tab" aria-selected="false" data-side="plan">📋 Dars rejasi</button>
+        <button class="cside-tab" role="tab" aria-selected="false" data-side="notes">📝 Qaydlar</button>
+      </div>
+
+      <!-- SIDEBAR TAB 1: CHAT -->
+      <div class="cside-view active" id="sideChat">
+        <div class="cchat-messages" id="cChatLog">
+          <div class="cmsg cmsg--tutor">
+            <span class="cmsg__sender">Dilnoza Karimova (Ustoz)</span>
+            <div class="cmsg__bubble">Assalomu alaykum! Darsimizga xush kelibsiz. Doskada Unit 4 mavzusini boshlaymiz 👋</div>
+            <span class="cmsg__time">15:00</span>
+          </div>
+        </div>
+
+        <!-- Quick Reply Chips -->
+        <div class="cquick-chips">
+          <button class="chip-btn" data-reply="Tushundim, rahmat! 👍">Tushundim 👍</button>
+          <button class="chip-btn" data-reply="Savolim bor edi ❓">Savol bor ❓</button>
+          <button class="chip-btn" data-reply="Iltimos, qaytara olasizmi? 🔁">Qaytaring 🔁</button>
+        </div>
+
+        <form class="cchat-form" id="cChatForm">
+          <input type="text" id="cChatInput" placeholder="Xabar yozing..." autocomplete="off" />
+          <button type="submit" class="btn btn--primary btn--sm" aria-label="Yuborish">➤</button>
+        </form>
+      </div>
+
+      <!-- SIDEBAR TAB 2: LESSON PLAN -->
+      <div class="cside-view" id="sidePlan">
+        <div class="cplan-wrap">
+          <div class="cplan-progress">
+            <span>Darsning borishi</span>
+            <b id="planPct">50%</b>
+            <div class="plan-bar"><div class="plan-bar-fill" id="planBarFill" style="width: 50%"></div></div>
+          </div>
+
+          <div class="cplan-tasks">
+            <label class="cplan-item done">
+              <input type="checkbox" checked />
+              <span>1. Salomlashish va o‘tgan mavzu takrori (10 min)</span>
+            </label>
+            <label class="cplan-item done">
+              <input type="checkbox" checked />
+              <span>2. Present Perfect grammatika tushuntiruvi (15 min)</span>
+            </label>
+            <label class="cplan-item">
+              <input type="checkbox" />
+              <span>3. Doskada amaliy mashqlar ishlash (15 min)</span>
+            </label>
+            <label class="cplan-item">
+              <input type="checkbox" />
+              <span>4. IELTS Speaking Part 1 savol-javob (15 min)</span>
+            </label>
+            <label class="cplan-item">
+              <input type="checkbox" />
+              <span>5. Uyga vazifa va savollarga javob (5 min)</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- SIDEBAR TAB 3: STUDENT NOTES -->
+      <div class="cside-view" id="sideNotes">
+        <div class="cnotes-wrap">
+          <div class="cnotes-head">
+            <span>Shaxsiy qaydlaringiz</span>
+            <small class="saved-badge">✓ Avtomatik saqlanadi</small>
+          </div>
+          <textarea class="cnotes-text" id="studentNotes" aria-label="Shaxsiy dars qaydlari" placeholder="Dars davomidagi muhim qoidalarni bu yerga yozib boring...&#10;&#10;Misol: have/has + V3&#10;already, just, yet..."></textarea>
+          <button class="btn btn--ghost btn--sm" id="copyNotesBtn" aria-label="Qaydlardan nusxa olish">📋 Qaydlardan nusxa olish</button>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <!-- Confirm End Lesson Modal -->
+  <div class="overlay" id="endModal" hidden>
+    <div class="modal glass" role="dialog" aria-modal="true" aria-labelledby="endModalTitle">
+      <h3 id="endModalTitle">Darsni yakunlashni xohlaysizmi?</h3>
+      <p class="msub">Dars xonasidan chiqishdan oldin ustoz dars o‘tganligini tasdiqlaydi va siz baholash qoldirishingiz mumkin bo‘ladi.</p>
+      <div class="sum">
+        <div><span>O‘tilgan vaqt:</span><b id="finalTime">25:10</b></div>
+        <div><span>Ustoz:</span><b>Dilnoza Karimova</b></div>
+      </div>
+      <div class="modal-actions" style="display:flex;gap:10px;margin-top:14px">
+        <button class="btn btn--primary" id="confirmEndBtn" style="flex:1">Ha, yakunlash</button>
+        <button class="btn btn--ghost" id="cancelEndBtn" style="flex:1">Darsga qaytish</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toasts" id="toasts"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/classroom.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: ustozhub
+    env: python
+    buildCommand: ""
+    startCommand: python3 server.py
+    autoDeploy: true
+    envVars:
+      - key: PORT
+        value: 10000

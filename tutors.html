@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="uz" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ustoz qidirish — UstozHub</title>
+  <meta name="description" content="IELTS, DTM, Prezident maktabi va boshqa fanlar bo‘yicha tasdiqlangan repetitorlar. Onlayn dars, Click/Payme to‘lov, xavfsiz kafolat." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <a href="#main" class="skip-link">Asosiy kontentga o‘tish</a>
+  <div class="bg-orbs" aria-hidden="true"><span></span><span></span><span></span></div>
+
+  <header class="nav" id="nav" role="banner">
+    <div class="container nav__inner">
+      <a href="index.html" class="logo" aria-label="UstozHub bosh sahifasi"><span class="logo__mark">U</span>Ustoz<b>Hub</b></a>
+      <nav class="nav__links" id="navLinks" aria-label="Asosiy menyu">
+        <a href="tutors.html" class="active" aria-current="page">Ustoz qidirish</a>
+        <a href="index.html#how">Qanday ishlaydi</a>
+        <a href="index.html#parents">Ota-onalar</a>
+        <a href="classroom.html">Dars xonasi</a>
+        <a href="index.html#pricing">Narxlar</a>
+      </nav>
+      <div class="nav__actions">
+        <button class="icon-btn" id="themeToggle" aria-label="Mavzuni almashtirish (yorug‘ yoki to‘q)">🌙</button>
+        <div id="userNavArea"></div>
+        <a href="index.html" class="btn btn--ghost btn--sm">Bosh sahifa</a>
+        <button class="icon-btn burger" id="burger" aria-label="Mobil menyuni ochish" aria-expanded="false" aria-controls="navLinks">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" role="main">
+    <!-- TUTOR SEARCH (Preply-style) -->
+    <section class="container section tpage" id="tutors" aria-labelledby="pageTitle">
+      <div class="section__head">
+        <h1 id="pageTitle">Ustoz <span class="grad">qidirish</span></h1>
+        <p>Maqsad va jadvalingizga mos tajribali ustozlar bilan birma-bir darslar</p>
+      </div>
+
+      <div class="sfilters" role="search" aria-label="Ustozlarni saralash va filtrlash">
+        <div class="frow r1">
+          <label class="fbox"><small>Men o‘rganmoqchiman</small><select id="fSubject" aria-label="O‘rganiladigan fanni tanlang"></select></label>
+          <label class="fbox"><small>Narx (bir dars)</small>
+            <select id="fPrice" aria-label="Narx oralig‘i">
+              <option value="0-999999">30 000 – 200 000+ so‘m</option>
+              <option value="0-60000">60 000 so‘mgacha</option>
+              <option value="60000-100000">60 000 – 100 000 so‘m</option>
+              <option value="100000-999999">100 000 so‘mdan yuqori</option>
+            </select></label>
+          <label class="fbox"><small>Dars tili</small>
+            <select id="fLang" aria-label="Dars o‘tiladigan til">
+              <option value="all">Istalgan til</option><option value="O‘zbek">O‘zbek</option>
+              <option value="Rus">Rus</option><option value="Ingliz">Ingliz</option>
+            </select></label>
+          <label class="fbox"><small>Men bo‘shman</small>
+            <select id="fTime" aria-label="Dars uchun qulay vaqt">
+              <option value="all">Vaqtni tanlang</option>
+              <option value="morning">Ertalab (06:00–12:00)</option>
+              <option value="day">Kunduz (12:00–17:00)</option>
+              <option value="evening">Kechqurun (17:00–23:00)</option>
+            </select></label>
+        </div>
+        <div class="frow r2">
+          <label class="fbox small"><select id="fFormat" aria-label="Dars formati"><option value="all">Format</option><option value="solo">Yakka (1-ga-1)</option><option value="group">Mini-guruh</option></select></label>
+          <label class="fbox small"><select id="fVerified" aria-label="Ustoz darajasi"><option value="all">Barcha ustozlar</option><option value="super">Super ustoz</option><option value="verified">Faqat tasdiqlangan</option></select></label>
+          <span class="grow"></span>
+          <label class="fbox small"><select id="fSort" aria-label="Natijalarni saralash tartibi">
+            <option value="top">Saralash: Eng yaxshilari</option><option value="priceAsc">Arzonroq</option>
+            <option value="priceDesc">Qimmatroq</option><option value="rating">Reyting</option><option value="lessons">Ko‘p dars o‘tgan</option></select></label>
+          <label class="fbox small search"><span>🔍</span><input id="fSearch" placeholder="Ism yoki kalit so‘z bo‘yicha qidirish" aria-label="Ustoz ismi yoki kalit so‘z bo‘yicha qidiruv" /></label>
+        </div>
+      </div>
+
+      <h3 class="listtitle" id="listTitle"></h3>
+      <div class="slayout">
+        <div class="slist" id="list"></div>
+        <aside class="sside"><div class="sside__box glass" id="side"></div></aside>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__in">
+      <div><a href="index.html" class="logo"><span class="logo__mark">U</span>Ustoz<b>Hub</b></a><p>O‘zbekiston uchun onlayn repetitorlik platformasi.</p></div>
+      <small>© 2026 UstozHub. Barcha huquqlar himoyalangan.</small>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div class="overlay" id="overlay" hidden>
+    <div class="modal glass" role="dialog" aria-modal="true" id="modal">
+      <button class="modal__x" id="modalX" aria-label="Yopish">✕</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <div class="toasts" id="toasts"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/tutors.js"></script>
+</body>
+</html>
